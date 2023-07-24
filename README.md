@@ -1,21 +1,28 @@
-# Project 2 oAuth Template
+# EventEasy - Your Ultimate Event Planning App! 
 
-Use this repo as the base for your project 2.
+Are you tired of the hassle of organizing events and struggling to keep track of your guest list? Look no further! Get ready to experience the power of "EventEasy" - the revolutionary app that takes event planning to a whole new level!
 
-## Getting Started
+## Plan Events with Ease:
+With "EventEasy," creating events has never been simpler! Whether it's a birthday bash, a wedding reception, a corporate conference, or a casual get-together, our user-friendly interface allows you to set up events effortlessly.
 
-* clone this repo (no forking needed)
-* run `rm -rf .git` to remove the git history
-* run `git init` to create a new git history
-* create a new repo on github and follow the instructions to push an existing repository from the command line
-* run `npm i` to install the required packages
-* touch a `.env` file and add the following to it:
+## Technologies Being Used:
+* JavaScript
+* HTML
+* CSS
+* Node.js
 
-```shell
-DATABASE_URL= < copy mongo uri from atlas / previous project >
-GOOGLE_CLIENT_ID= < copy from google cloud devs / previous project >
-GOOGLE_SECRET=< copy from google cloud devs / previous project >
-GOOGLE_CALLBACK=http://localhost:3000/oauth2callback
-SECRET="can be any string"
-```
-* run `nodemon` to test your app! 
+## Wireframes, ERDs and User Stories:
+
+### Views
+![inviteCard](inviteCard.drawio.svg)
+
+
+### ERDs
+![erd](erd.drawio.svg)
+
+![restfulRoute](restfulRoute.drawio.svg)
+<strong> The same chart will exist for the creation of the invited guest list </strong>
+
+### User Stories
+
+## MVP Goals/Stretch Goals
