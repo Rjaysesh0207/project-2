@@ -36,8 +36,7 @@ With "EventEasy," creating events has never been simpler! Whether it's a birthda
 * Authorization will be needed to create and update event data, add contacts and make an invite list
 * Create and update event data
 * Create and update contacts
-* Create and update the list of invited guests
-* View the send page that sends invites out
+* View the send page that sends the invites out
 
 ### Stretch Goals
 * Customize an invite card
