@@ -14,14 +14,13 @@ With "EventEasy," creating events has never been simpler! Whether it's a birthda
 ## Wireframes, ERDs and User Stories:
 
 ### Views
-![inviteCard](inviteCard.drawio.svg)
 
 
 ### ERDs
 ![erd](erd.drawio.svg)
 
 ![restfulRoute](restfulRoute.drawio.svg) <br>
-<strong> The same chart will exist for the creation of the invited guest list </strong>
+
 
 ### User Stories
 1. As a user, I want to create events with date, time, and location so that I can invite my contacts and plan for a successful gathering.
@@ -34,7 +33,6 @@ With "EventEasy," creating events has never been simpler! Whether it's a birthda
 ## MVP Goals/Stretch Goals:
 
 ### MVP Goals
-* Customize an invite card
 * Authorization will be needed to create and update event data, add contacts and make an invite list
 * Create and update event data
 * Create and update contacts
@@ -42,6 +40,7 @@ With "EventEasy," creating events has never been simpler! Whether it's a birthda
 * View the send page that sends invites out
 
 ### Stretch Goals
+* Customize an invite card
 * Send real invites to real contact numbers
 * Create a new list of guests who have RSVP
 * If a guest RSVPs then automatically update the list of guests
