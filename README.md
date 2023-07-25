@@ -31,5 +31,17 @@ With "EventEasy," creating events has never been simpler! Whether it's a birthda
 3. As a user, I want to have a user-friendly interface that is easy to navigate, allowing me to quickly create and manage events without any technical hurdles.
 
 4. As a user, I want to be able to see the list of guests on the invite list.
-## MVP Goals/Stretch Goals
+## MVP Goals/Stretch Goals:
 
+### MVP Goals
+* Customize an invite card
+* Authorization will be needed to create and update event data, add contacts and make an invite list
+* Create and update event data
+* Create and update contacts
+* Create and update the list of invited guests
+* View the send page that sends invites out
+
+### Stretch Goals
+* Send real invites to real contact numbers
+* Create a new list of guests who have RSVP
+* If a guest RSVPs then automatically update the list of guests
