@@ -4,7 +4,8 @@ const router = express.Router();
 const eventsCtrl = require('../controllers/events');
 
 // GET /events
-router.get('/', eventsCtrl.events);
+router.get('/', eventsCtrl.index);
+router.get('/new',eventsCtrl.new)
 
 
 module.exports = router;

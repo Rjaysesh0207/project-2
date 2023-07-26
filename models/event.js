@@ -5,7 +5,7 @@ const eventSchema = new Schema({
   title: String,
   date: String,
   location: String,
-  guestList: String
+  guestList: [String]
 }, {
   timestamps: true
 });
