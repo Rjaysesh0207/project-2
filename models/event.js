@@ -2,9 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
-  title: String,
-  date: String,
-  location: String
+  title: { type: String, required: true },
+  date: {
+    type: Date,
+    default: function() {
+      return new Date().getFullYear();
+    },
+  },
+  location: { type: String, required: true },
 }, {
   timestamps: true
 });
