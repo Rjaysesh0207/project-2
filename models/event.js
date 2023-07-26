@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   title: String,
   date: String,
-  location: String,
-  guestList: [String]
+  location: String
 }, {
   timestamps: true
 });

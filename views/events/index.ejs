@@ -1,5 +1,22 @@
 <%- include('../partials/header') %>
-<div><% events %></div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+</table>
+<tbody>
+  <% events.forEach(function(e) { %>
+    <tr>
+      <td><%= e.title %></td>
+      <td><%= e.date %></td>
+      <td><%= e.location %></td>
+    </tr>
+  <% }) %>
+</tbody>
 
 <a href="/events/new">Make an event</a>
 

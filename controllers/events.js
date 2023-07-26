@@ -5,7 +5,7 @@ module.exports = {
   index
 }
 function newEvent(req, res) {
-  res.render('events/new', { err: ''})
+  res.render('events/new', { title: 'Create Event', errorMsg: ''})
 }
 
 async function index(req, res) {
