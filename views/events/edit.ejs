@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<h2>Edit Event</h2>
+<form action="/events/<%= event._id %>?_method=PUT" method="POST">
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" value="<%= event.title %>">
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" value="<%= event.date %>">
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location" value="<%= event.location %>">
+  <button type="submit">Save Changes</button>
+</form>
+
+<%- include('../partials/footer') %>

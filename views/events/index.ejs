@@ -14,7 +14,11 @@
       <td><%= e.title %></td>
       <td><%= e.date %></td>
       <td><%= e.location %></td>
-      <td><a href="/events/<%= e._id %>">Update Details</a></td>
+      <td><a href="/events/<%= e._id %>">Update Details</a>
+          <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>  
+      </td>
     </tr>
   <% }) %>
 </tbody>

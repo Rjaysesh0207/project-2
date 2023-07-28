@@ -11,6 +11,12 @@ router.get('/new',eventsCtrl.new)
 router.get('/:id', eventsCtrl.show);
 // POST /events
 router.post('/', eventsCtrl.create);
+// GET /events/:id/
+router.get('/:id/edit', eventsCtrl.edit);
+// POST /events/:id
+router.put('/:id', eventsCtrl.update);
+// DELETE /events/:id
+router.delete('/:id', eventsCtrl.delete);
 
 
 module.exports = router;
