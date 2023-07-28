@@ -8,6 +8,10 @@ router.get('/', contactCtrl.index);
 router.get('/new', contactCtrl.new);
 // POST /contacts
 router.post('/', contactCtrl.create);
+// GET /contacts/:id/edit
+router.get('/:id/edit', contactCtrl.edit);
+// PUT /contacts/:id
+router.put('/:id', contactCtrl.update);
 // DELETE /contacts/:id
 router.delete('/:id', contactCtrl.delete);
 

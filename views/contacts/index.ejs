@@ -7,6 +7,7 @@
       <td><%= c.name %></td>
       <td><%= c.phone %></td>
       <td><%= c.email %></td>
+      <td><a href="/contacts/<%= c._id %>/edit">Update Details</a></td>
       <td>
         <form action="/contacts/<%= c._id %>?_method=DELETE" method="POST">
           <button type="submit">X</button>

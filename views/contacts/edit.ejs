@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<h2>Edit Contact</h2>
+<form action="/contacts/<%= contact._id %>?_method=PUT" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" value="<%= contact.name %>">
+  <label for="phone">Phone:</label>
+  <input type="text" id="phone" name="phone" value="<%= contact.phone %>">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" value="<%= contact.email %>">
+  <button type="submit">Save Changes</button>
+</form>
+
+<%- include('../partials/footer') %>
