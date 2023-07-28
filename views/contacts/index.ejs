@@ -1,5 +1,19 @@
 <%- include('../partials/header') %>
 
 <h2>This is the contacts pages</h2>
+<tbody>
+  <% contacts.forEach(function(c) { %>
+    <tr>
+      <td><%= c.name %></td>
+      <td><%= c.phone %></td>
+      <td><%= c.email %></td>
+      <td>
+        <form action="/contacts/<%= c._id %>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</tbody>
 <a href="/contacts/new">Add a New Contact</a>
 <%- include('../partials/footer') %>
