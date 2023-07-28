@@ -1,4 +1,5 @@
 const Event = require('../models/event')
+const Contact = require('../models/contact')
 
 module.exports = {
   index,
@@ -16,28 +17,42 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  const event = await Event.findById(req.params.id)
-  res.render('events/show', { title: 'Event Details', event })
+  const eventId = req.params.id;
+
+  try {
+    const event = await Event.findById(eventId).populate('guests');
+    if (!event) {
+      return res.status(404).json({ error: 'Event not found' });
+    }
+
+    res.render('events/show', { title: 'Event Details', event });
+  } catch (error) {
+    console.error('Error fetching event details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 }
 
-function newEvent(req, res) {
-  // render an error message if create action fails
-  res.render('events/new', { title: 'Create Event', errorMsg: ''})
+
+async function newEvent(req, res) {
+  try {
+    const contacts = await Contact.find({}).sort('name');
+    res.render('events/new', { title: 'Enter a New Event', contacts, errorMsg: '' });
+  } catch (error) {
+    console.error('Error fetching contacts:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 }
 
 async function create(req, res) {
-  // remove empty properties so default can apply
-  for (let key in req.body) {
-    if (req.body[key] === '') delete req.body[key]
-  }
+  const eventData = req.body;
+  eventData.guests = req.body.guests || []; // Array of selected guest _ids
+
   try {
-    const event = await Event.create(req.body)
-    // redirect to the newly created event
-    res.redirect(`/events`)
-  } catch (err) {
-    // give an error if it fails
-    console.log(err)
-    res.render('events/new', { errorMsg: err.message })
+    const createdEvent = await Event.create(eventData);
+    res.redirect(`/events/${createdEvent._id}`);
+  } catch (error) {
+    console.error('Error creating event:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 }
 
@@ -46,7 +61,7 @@ async function edit(req, res) {
 
   try {
     // Fetch the event details based on the eventId
-    const event = await Event.findById(eventId);
+    const event = await Event.findById(eventId).populate('guests');
 
     if (!event) {
       // If the event with the provided ID is not found

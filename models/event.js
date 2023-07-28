@@ -9,7 +9,14 @@ const eventSchema = new Schema({
       return new Date().getFullYear();
     },
   },
-  location: { type: String, required: true },
+  location: { 
+    type: String, 
+    required: true 
+  },
+  guests: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Contact',
+  }],
 }, {
   timestamps: true
 });

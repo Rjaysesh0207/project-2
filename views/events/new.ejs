@@ -11,6 +11,15 @@
   <label>Location:
     <input type="text", name="location">
   </label><br>
+
+  <h3>Guest List</h3>
+  <% contacts.forEach(function(contact) { %>
+    <label>
+      <input type="checkbox" name="guests" value="<%= contact._id %>">
+      <%= contact.name %>
+    </label><br>
+  <% }) %>
+
   <button type="submit">Add Event</button>
 </form>
 <p><%= errorMsg %></p>
