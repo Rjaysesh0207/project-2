@@ -1,16 +1,35 @@
 <%- include('./partials/header') %>
+<section class="bg-gradient-to-r from-blue-500 to-blue-800 text-white py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-4">Plan Your Perfect Event</h1>
+      <p class="text-xl mb-6">Create memorable events with our event planning app. Get started today!</p>
+      <a href="/events" class="bg-white text-blue-500 font-semibold px-6 py-3 rounded-full hover:bg-blue-100 transition-colors">Get Started</a>
+    </div>
+  </div>
+</section>
 
-<h1 class="text-xs font-bold underline">
-  Hello world!
-</h1>
-
-<% if (!user) { %>
-	<p>please login to continue</p>
-<% } else { %>
-	<p>Welcome, <%= user.name %> <%= user.email %></p>
-	<% if (user.avatar) { %>
-		<img src="<%= user.avatar %>" alt="<%= user.name %>'s avatar" />
-	<% } %>
-<% } %>
+<section class="bg-white py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-6">Key Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Feature cards -->
+        <div class="bg-blue-100 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">Easy Event Planning</h3>
+          <p class="text-gray-700">Create and update your event details.</p>
+        </div>
+        <div class="bg-blue-100 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">Your Contacts</h3>
+          <p class="text-gray-700">Save your friends and family's contact information.</p>
+        </div>
+        <div class="bg-blue-100 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">Guest List</h3>
+          <p class="text-gray-700">Add any of your favorite people to your guest list.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <%- include('./partials/footer') %>

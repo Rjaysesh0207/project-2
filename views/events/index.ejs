@@ -1,29 +1,31 @@
 <%- include('../partials/header') %>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Location</th>
-    </tr>
-  </thead>
-</table>
-<tbody>
-  <% events.forEach(function(e) { %>
-    <tr>
-      <td><%= e.title %></td>
-      <td><%= e.date %></td>
-      <td><%= e.location %></td>
-      <td><a href="/events/<%= e._id %>">Update Details</a>
-          <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
-          </form>  
-      </td>
-    </tr>
-  <% }) %>
-</tbody>
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-4xl font-bold mb-8">Upcoming Events</h1>
+  <table class="w-full">
+    <thead>
+      <tr class="bg-blue-500 text-white">
+        <td class="py-2 px-4">Title</td class="py-2 px-4">
+        <td class="py-2 px-4">Date</td class="py-2 px-4">
+        <td class="py-2 px-4">Location</td class="py-2 px-4">
+      </tr>
+    </thead>
+  </table>
+  <tbody>
+    <% events.forEach(function(e) { %>
+      <tr class="bg-blue-500 text-white">
+        <td><%= e.title %></td>
+        <td><%= e.date %></td>
+        <td><%= e.location %></td>
+        <td><a href="/events/<%= e._id %>">Update Details</a>
+            <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
+              <button type="submit">Delete</button>
+            </form>  
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
 
-<a href="/events/new">Make an event</a>
+  <a href="/events/new">Make an event</a>
 
 
 <%- include('../partials/footer') %>
