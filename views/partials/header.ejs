@@ -4,16 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="/styles.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    ::-webkit-datetime-local-edit-year-field:not([aria-valuenow]),
+    ::-webkit-datetime-local-edit-month-field:not([aria-valuenow]),
+    ::-webkit-datetime-local-edit-day-field:not([aria-valuenow]) {
+        color: transparent;
+    }
+  </style>
   <title><%= title %></title>
 </head>
 
-<body>
+<body class="text-gray-600">
   <header class="bg-gray-100">
     <div class="container mx-auto px-4 py-6">
       <nav class="flex justify-between items-center">
         <% if (user) { %>
           <a class="text-white bg-red-500 py-2 px-4 rounded transition-colors" href="/logout">Log Out</a>
+
+          <a class="text-gray-600 hover:text-gray-900" href="/" >Home </a>
           
           <a class="text-gray-600 hover:text-gray-900" href="/events"> Events </a>
           
@@ -22,6 +31,7 @@
           <a class="text-white bg-green-500 hover:bg-green-600 py-2 px-4 rounded transition-colors" href="/auth/google">Log in</a>
         <% } %>
       </nav>
-  </div>
-  <main> 
+    </div>
+  </header>
+  <main class="container mx-auto px-4 py-8"> 
     

@@ -1,26 +1,29 @@
 <%- include('../partials/header') %>
 
-<h2>Enter a New Event</h2>
-<form action="/events" method="POST">
-  <label>Title:
-    <input type="text" name="title">
+<h2 class="text-3xl font-bold mb-6">Enter a New Event</h2>
+<form class="max-w-md" action="/events" method="POST">
+  <label class="block mb-4">
+    <span class="text-gray-700 font-semibold">Title:</span>
+    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-200 focus:ring-blue-500 focus:border-blue-500" type="text" name="title"/>
   </label><br>
-  <label>When is the event:
-    <input type="datetime-local" name="date">
+  <label class="block mb-4">
+    <span class="text-gray-700 font-semibold">When is the event:</span>
+    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-200 focus:ring-blue-500 focus:border-blue-500" placeholder="" type="datetime-local" name="date">
   </label><br>
-  <label>Location:
-    <input type="text", name="location">
+  <label class="block mb-4">
+    <span class="text-gray-700 font-semibold">Location:</span>
+    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-200 focus:ring-blue-500 focus:border-blue-500" type="text", name="location">
   </label><br>
 
-  <h3>Guest List</h3>
+  <h3 class="text-2xl font-bold mb-3">Guest List</h3>
   <% contacts.forEach(function(contact) { %>
-    <label>
-      <input type="checkbox" name="guests" value="<%= contact._id %>">
-      <%= contact.name %>
+    <label class="block mb-2">
+      <input class="mr-2 leading-tight" type="checkbox" name="guests" value="<%= contact._id %>">
+      <span><%= contact.name %></span>
     </label><br>
   <% }) %>
 
-  <button type="submit">Add Event</button>
+  <button class="mt-4 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors" type="submit">Add Event</button>
 </form>
 <p><%= errorMsg %></p>
 

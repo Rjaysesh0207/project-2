@@ -1,9 +1,9 @@
 const Event = require('../models/event')
 const Contact = require('../models/contact')
+const moment = require('moment')
 
 module.exports = {
   index,
-  show,
   new: newEvent,
   create,
   edit,
@@ -13,25 +13,8 @@ module.exports = {
 
 async function index(req, res) {
   const events = await Event.find({})
-  res.render('events/index', { title: 'Events Page', events })
+  res.render('events/index', { title: 'Events Page', events, moment })
 }
-
-async function show(req, res) {
-  const eventId = req.params.id;
-
-  try {
-    const event = await Event.findById(eventId).populate('guests');
-    if (!event) {
-      return res.status(404).json({ error: 'Event not found' });
-    }
-
-    res.render('events/show', { title: 'Event Details', event });
-  } catch (error) {
-    console.error('Error fetching event details:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-}
-
 
 async function newEvent(req, res) {
   try {
@@ -49,7 +32,7 @@ async function create(req, res) {
 
   try {
     const createdEvent = await Event.create(eventData);
-    res.redirect(`/events/${createdEvent._id}`);
+    res.redirect(`/events`);
   } catch (error) {
     console.error('Error creating event:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -58,10 +41,13 @@ async function create(req, res) {
 
 async function edit(req, res) {
   const eventId = req.params.id;
+  
 
   try {
+    const contacts = await Contact.find({}).sort('name');
     // Fetch the event details based on the eventId
     const event = await Event.findById(eventId).populate('guests');
+    const guestIds = event.guests.map( guest => guest._id.toString() )
 
     if (!event) {
       // If the event with the provided ID is not found
@@ -69,7 +55,7 @@ async function edit(req, res) {
     }
 
     // Render the edit-event template with the existing event data
-    res.render('events/edit', { title: 'Edit Event', event });
+    res.render('events/edit', { title: 'Edit Event', event, contacts, guestIds, moment });
   } catch (error) {
     console.error('Error fetching event details:', error);
     // Handle the error appropriately, e.g., render an error page or respond with JSON
@@ -79,7 +65,7 @@ async function edit(req, res) {
 
 async function update(req, res) {
   const eventId = req.params.id;
-  const updatedEvent = req.body;
+  let updatedEvent = req.body;
 
   try {
     // Find the event by its ID and update it with the new data
