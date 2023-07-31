@@ -1,18 +1,24 @@
 <%- include('../partials/header') %>
-<h2>This is tha page to add contacts</h2>
 
-<h2>Enter a New Contact</h2>
-<form action="/contacts" method="POST">
-  <label>Name:
-    <input type="text" name="name">
-  </label><br>
-  <label for="phone">Phone Number:</label>
-    <input type="text" id="phone" name="phone" pattern="\d{10}" required>
-  </label><br>
-  <label>email:
-    <input type="text", name="email">
-  </label><br>
-  <button type="submit">Add Contact</button>
+<h2 class="text-3xl font-bold mb-6">Enter a New Contact</h2>
+<form class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md" action="/contacts" method="POST">
+  <div class="mb-4">
+    <label for="name" class="block font-semibold text-gray-700">Name:</label>
+    <input type="text" id="name" name="name" class="mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500" required>
+  </div>
+
+  <div class="mb-4">
+    <label for="phone" class="block font-semibold text-gray-700">Phone Number:</label>
+    <input type="text" id="phone" name="phone" pattern="\d{10}" class="mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500" required>
+    <p class="text-sm text-gray-500">Please enter a 10-digit phone number.</p>
+  </div>
+
+  <div class="mb-4">
+    <label for="email" class="block font-semibold text-gray-700">Email:</label>
+    <input type="text" id="email" name="email" class="mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-500">
+  </div>
+
+  <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add Contact</button>
 </form>
 
 

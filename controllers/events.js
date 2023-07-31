@@ -30,9 +30,11 @@ async function create(req, res) {
   const eventData = req.body;
   eventData.guests = req.body.guests || []; // Array of selected guest _ids
 
+
   try {
     const createdEvent = await Event.create(eventData);
     res.redirect(`/events`);
+    console.log(createdEvent);
   } catch (error) {
     console.error('Error creating event:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -78,6 +80,7 @@ async function update(req, res) {
       // If the event with the provided ID is not found
       return res.status(404).json({ error: 'Event not found' });
     }
+    console.log(updatedEvent)
 
     // Redirect to the event list or respond with JSON if it's an API
     res.redirect('/events'); // Or res.json({ message: 'Event updated successfully' });

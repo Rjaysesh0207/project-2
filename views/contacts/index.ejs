@@ -1,20 +1,42 @@
 <%- include('../partials/header') %>
 
-<h2>This is the contacts pages</h2>
-<tbody>
-  <% contacts.forEach(function(c) { %>
-    <tr>
-      <td><%= c.name %></td>
-      <td><%= c.phone %></td>
-      <td><%= c.email %></td>
-      <td><a href="/contacts/<%= c._id %>/edit">Update Details</a></td>
-      <td>
-        <form action="/contacts/<%= c._id %>?_method=DELETE" method="POST">
-          <button type="submit">X</button>
-        </form>
-      </td>
-    </tr>
-  <% }) %>
-</tbody>
-<a href="/contacts/new">Add a New Contact</a>
+<% if (contacts.length === 0) { %>
+  <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative mb-4" role="alert">
+    <strong class="font-bold">No Contacts Found!</strong>
+    <span class="block sm:inline">Start by adding some contacts.</span>
+  </div>
+<% } else { %>
+  <h2 class="text-3xl font-bold mb-6">Your Contacts</h2>
+  <table class="w-full">
+    <thead>
+      <tr class="bg-blue-500 text-white">
+        <th class="py-2 px-4">Name</th>
+        <th class="py-2 px-4">Phone</th>
+        <th class="py-2 px-4">Email</th>
+        <th class="py-2 px-4">Update</th>
+        <th class="py-2 px-4">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.forEach(function(c) { %>
+        <tr class="bg-white border-t border-gray-300">
+          <td class="py-2 px-4 text-center"><%= c.name %></td>
+          <td class="py-2 px-4 text-center"><%= c.phoneFormatted %></td>
+          <td class="py-2 px-4 text-center"><%= c.email %></td>
+          <td class="py-2 px-4 text-center"><a class="text-blue-500 font-semibold" href="/contacts/<%= c._id %>/edit">Update Details</a></td>
+          <td class="py-2 px-4 text-center">
+            <form action="/contacts/<%= c._id %>?_method=DELETE" method="POST">
+              <button type="submit" class="text-red-500 font-semibold">X</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% if (contacts.length > 0) { %>
+    <a href="/events" class="mt-4 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">Go to Events</a>
+  <% } %>
+<% } %>  
+<a href="/contacts/new" class="mt-4 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">Add a New Contact</a> 
+
 <%- include('../partials/footer') %>

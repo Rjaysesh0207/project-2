@@ -1,5 +1,6 @@
 const Contact = require('../models/contact');
 
+
 module.exports = {
   index,
   new: newContact,
@@ -10,8 +11,25 @@ module.exports = {
 }
 
 async function index(req, res) {
-  const contacts = await Contact.find({}).sort('name');
-  res.render('contacts/index', { title: 'Contacts', contacts });
+  try {
+    const contacts = await Contact.find({}).sort('name');
+
+    // Format phone numbers in (555)-555-5555 pattern
+    contacts.forEach((contact) => {
+      const cleaned = ('' + contact.phone).replace(/\D/g, '');
+      const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+      if (match) {
+        contact.phoneFormatted = `(${match[1]})-${match[2]}-${match[3]}`;
+      } else {
+        contact.phoneFormatted = contact.phone;
+      }
+    });
+    res.render('contacts/index', { title: 'Contacts', contacts });
+  } catch (error) {
+    // Handle the error
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
 }
 
 async function newContact(req, res) {

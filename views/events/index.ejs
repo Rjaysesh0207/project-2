@@ -1,31 +1,37 @@
 <%- include('../partials/header') %>
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-4xl font-bold mb-8">Upcoming Events</h1>
-  <table class="w-full">
-    <thead>
-      <tr class="bg-blue-500 text-white">
-        <td class="py-2 px-4">Date</td class="py-2 px-4">
-        <td class="py-2 px-4">Title</td class="py-2 px-4">
-        <td class="py-2 px-4">Location</td class="py-2 px-4">
-        <td class="py-2 px-4"></td class="py-2 px-4">
-      </tr>
-    </thead>
-    <tbody>
-      <% events.forEach(function(e) { %>
-        <tr class="odd:bg-white even:bg-gray-100 border-t border-gray-300">
-          <td class="py-2 px-4"><%= moment(e.date).format('MM/DD/YYYY h:mm a')  %></td>
-          <td class="py-2 px-4"><%= e.title %></td>
-          <td class="py-2 px-4"><%= e.location %></td>
-          <td class="py-2 px-4"><a class="text-blue-500 font-semibold mr-4" href="/events/<%= e._id %>/edit">Update Details</a>
-            <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
-              <button class="text-red-500 font-semibold" type="submit">Delete</button>
-            </form>  
-          </td>
+<% if (events.length === 0) { %>
+  <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative mb-4" role="alert">
+    <strong class="font-bold">No Events Found!</strong>
+    <span class="block sm:inline">Start by adding an event.</span>
+  </div>
+<% } else { %>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">Upcoming Events</h1>
+    <table class="w-full">
+      <thead>
+        <tr class="bg-blue-500 text-white">
+          <td class="py-2 px-4">Date</td class="py-2 px-4">
+          <td class="py-2 px-4">Title</td class="py-2 px-4">
+          <td class="py-2 px-4">Location</td class="py-2 px-4">
+          <td class="py-2 px-4"></td class="py-2 px-4">
         </tr>
-        <% }) %>
-      </tbody>
-    </table>
-
+      </thead>
+      <tbody>
+        <% events.forEach(function(e) { %>
+          <tr class="odd:bg-white even:bg-gray-100 border-t border-gray-300">
+            <td class="py-2 px-4"><%= moment(e.date).format('MM/DD/YYYY h:mm a')  %></td>
+            <td class="py-2 px-4"><%= e.title %></td>
+            <td class="py-2 px-4"><%= e.location %></td>
+            <td class="py-2 px-4"><a class="text-blue-500 font-semibold mr-4" href="/events/<%= e._id %>/edit">Update Details</a>
+              <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
+                <button class="text-red-500 font-semibold" type="submit">Delete</button>
+              </form>  
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+<% } %>
   <a class="mt-4 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors" href="/events/new">Make an event</a>
 
 
