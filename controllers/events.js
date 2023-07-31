@@ -30,7 +30,6 @@ async function create(req, res) {
   const eventData = req.body;
   eventData.guests = req.body.guests || []; // Array of selected guest _ids
 
-
   try {
     const createdEvent = await Event.create(eventData);
     res.redirect(`/events`);
@@ -43,7 +42,6 @@ async function create(req, res) {
 
 async function edit(req, res) {
   const eventId = req.params.id;
-  
 
   try {
     const contacts = await Contact.find({}).sort('name');
@@ -55,6 +53,8 @@ async function edit(req, res) {
       // If the event with the provided ID is not found
       return res.status(404).json({ error: 'Event not found' });
     }
+
+    
 
     // Render the edit-event template with the existing event data
     res.render('events/edit', { title: 'Edit Event', event, contacts, guestIds, moment });

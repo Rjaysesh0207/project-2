@@ -4,15 +4,15 @@
 <form class="max-w-md" action="/events/<%= event._id %>?_method=PUT" method="POST">
   <label class="block mb-4" for="title">
     <span class="text-gray-700 font-semibold">Title:</span>
-    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500" type="text" id="title" name="title" value="<%= event.title %>">
+    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500" type="text" id="title" name="title" value="<%= event.title %>" required>
   </label>
   <label class="block mb-4" for="date">
     <span class="text-gray-700 font-semibold">Date:</span>
-    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500" type="datetime-local" id="date" name="date" value="<%= moment(event.date).format('YYYY-MM-DDThh:mm') %>">
+    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500" type="datetime-local" id="date" name="date" value="<%= moment(event.date).format('YYYY-MM-DDThh:mm') %>" required>
   </label>
   <label class="block mb-4" for="location">
     <span class="text-gray-700 font-semibold">Location:</span>
-    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500" type="text" id="location" name="location" value="<%= event.location %>">
+    <input class="block w-full mt-1 px-4 py-2 rounded-lg border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500" type="text" id="location" name="location" value="<%= event.location %>" required>
   </label>
   <h3 class="text-2xl font-bold mb-2">Guests:</h3>
   <% contacts.forEach(function(contact) { %>
@@ -21,7 +21,7 @@
       <% if (event.guests.some(guest => guest._id.equals(contact._id))) { %>
         checked
       <% } %> 
-      id="guests" name="guests" value="<%= contact._id %>">
+      id="guests" name="guests" value="<%= contact._id %>" required>
       <span class="text-gray-700" for="guests"><%= contact.name %></span>
     </label>
     <% }) %>
