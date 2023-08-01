@@ -5,9 +5,12 @@ Are you tired of the hassle of organizing events and struggling to keep track of
 ## Plan Events with Ease:
 With "EventEasy," creating events has never been simpler! Whether it's a birthday bash, a wedding reception, a corporate conference, or a casual get-together, our user-friendly interface allows you to set up events effortlessly.
 
+![Alt text](<Screenshot 2023-07-31 at 7.44.16 PM.png>)
+
+![Alt text](<Screenshot 2023-07-31 at 7.57.06 PM.png>)
 ## Technologies Being Used:
 * JavaScript
-* HTML
+* EJS
 * CSS
 * Node.js
 
@@ -29,14 +32,13 @@ With "EventEasy," creating events has never been simpler! Whether it's a birthda
 
 3. As a user, I want to have a user-friendly interface that is easy to navigate, allowing me to quickly create and manage events without any technical hurdles.
 
-4. As a user, I want to be able to see the list of guests on the invite list.
 ## MVP Goals/Stretch Goals:
 
 ### MVP Goals
 * Authorization will be needed to create and update event data, add contacts and make an invite list
 * Create and update event data
 * Create and update contacts
-* View the send page that sends the invites out
+
 
 ### Stretch Goals
 * Customize an invite card

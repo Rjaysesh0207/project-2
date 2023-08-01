@@ -84,7 +84,7 @@ async function update(req, res) {
       // If the contact with the provided ID is not found
       return res.status(404).json({ error: 'Contact not found' });
     }
-
+    console.log(contact)
     // Redirect to the contact list or respond with JSON if it's an API
     res.redirect('/contacts'); // Or res.json({ message: 'Contact updated successfully' });
   } catch (error) {
